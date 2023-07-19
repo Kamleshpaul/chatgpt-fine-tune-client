@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## ChatGPT Fine-Tune Client
 
-## Getting Started
+ChatGPT Fine-Tune Client is an open-source web application that allows users to interact with a fine-tuned version of the ChatGPT language model. The application is built with Next.js, Tailwind CSS, and Ant Design (antd).
 
-First, run the development server:
+### Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Follow these steps to run the project locally on your machine:
+
+1. **Copy .env.example to .env**
+
+In the root of the project, find the .env.example file. Duplicate this file and rename it to .env. The .env file is used to set up environment variables for the application.
+
+2. **Install Dependencies**
+
+Open your terminal or command prompt, navigate to the project's root directory, and run the following command to install the required dependencies:
+
+```sh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Run the Application**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Once the dependencies are installed, start the development server by running the following command:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```sh
+npm run dev
+```
 
-## Learn More
+The application will now be running locally at http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
+4. **Add and Edit Sample**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+On the application's homepage (http://localhost:3000), click on the "Add" button to create a new fine-tuning sample. You can download the provided sample, make any necessary edits, and save it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. **Upload the Sample**
 
-## Deploy on Vercel
+After editing the sample, return to the application and upload the edited file using the provided upload functionality.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. **Fine-Tune the Model**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Once the sample is uploaded, click on the "Fine Tune" button to start the fine-tuning process using the uploaded sample. The application will utilize the fine-tuned model to generate more accurate and contextually relevant responses based on the uploaded data.
+
+7. **Check Fine-tune Status**
+
+Check the progress by clicking on the "View" button. Once the `Message` shows "Job succeeded," the "Fine-Tuned Model" section will appear. Use this fine-tuned model for the completion API and integrate it into your own chatbot. Enjoy the enhanced capabilities!
+
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
+
+### Contributing
+
+Contributions to the ChatGPT Fine-Tune Client project are welcome. If you encounter any issues or have ideas for improvements, please feel free to submit pull requests.

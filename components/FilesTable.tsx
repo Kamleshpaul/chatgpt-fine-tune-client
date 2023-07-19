@@ -89,12 +89,14 @@ const FilesTable: React.FC<Props> = ({ files }) => {
           >
             <Button className="flex items-center justify-center" danger type="text" icon={<DeleteOutlined />} size="small" />
           </Popconfirm>
-          <Button
-            onClick={() => {
-              handleCreateFineTune(record.id)
-            }}
-            className="flex items-center justify-center"
-          >Fine Tune</Button>
+          <Popconfirm
+            title="Generate fine-tune"
+            onConfirm={() => handleCreateFineTune(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button className="flex items-center justify-center">Fine Tune</Button>
+          </Popconfirm>
         </span>
       ),
     },
@@ -128,9 +130,9 @@ const FilesTable: React.FC<Props> = ({ files }) => {
               onClick={() => {
                 setAddModalVisible(true)
               }}
-              icon={<PlusSquareOutlined  className='mt-0'/>}
+              icon={<PlusSquareOutlined className='mt-0' />}
             >
-                Add
+              Add
             </Button>
 
 
@@ -152,6 +154,7 @@ const FilesTable: React.FC<Props> = ({ files }) => {
         onCancel={() => {
           setViewModalVisible(false);
         }}
+        width={"80%"}
         footer={null}
       >
         {viewModalData && (
@@ -182,7 +185,6 @@ const FilesTable: React.FC<Props> = ({ files }) => {
         onCancel={() => {
           setAddModalVisible(false);
         }}
-        width={"80%"}
         footer={null}
       >
         <Button type='link' onClick={handleDownloadSample}>Download sample</Button>
