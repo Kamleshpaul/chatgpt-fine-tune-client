@@ -35,3 +35,14 @@ export async function handleCreateFineTune(fileId: string) {
   })
   revalidatePath('/');
 }
+
+export async function handleCancelFineTune(id: string) {
+  await openai.cancelFineTune(id);
+  revalidatePath('/');
+}
+
+
+export async function handleViewFineTune(id: string) {
+  const res = await openai.listFineTuneEvents(id);
+  return res.data;
+}

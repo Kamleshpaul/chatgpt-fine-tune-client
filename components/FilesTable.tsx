@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Table, Button, Popconfirm, Modal, message, Upload } from 'antd';
-import { FaEye, FaPlus, FaTrash } from 'react-icons/fa';
+import { DeleteOutlined, EyeOutlined, PlusSquareOutlined } from "@ant-design/icons"
 import { OpenAIFile } from 'openai';
 import { handleCreateFineTune, handleDelete, handleView } from '@/actions/opanai';
 import type { UploadProps } from 'antd';
@@ -76,8 +76,8 @@ const FilesTable: React.FC<Props> = ({ files }) => {
       title: 'Action',
       key: 'action',
       render: (record: OpenAIFile) => (
-        <span>
-          <Button className="mr-2" type="text" icon={<FaEye />} size="small"
+        <span className="flex space-x-2">
+          <Button className="flex items-center justify-center" type="text" icon={<EyeOutlined />} size="small"
             onClick={() => { clickedView(record.id) }}
           />
           <Popconfirm
@@ -87,12 +87,13 @@ const FilesTable: React.FC<Props> = ({ files }) => {
             okText="Yes"
             cancelText="No"
           >
-            <Button danger type="text" icon={<FaTrash />} size="small" />
+            <Button className="flex items-center justify-center" danger type="text" icon={<DeleteOutlined />} size="small" />
           </Popconfirm>
           <Button
             onClick={() => {
               handleCreateFineTune(record.id)
             }}
+            className="flex items-center justify-center"
           >Fine Tune</Button>
         </span>
       ),
@@ -122,14 +123,17 @@ const FilesTable: React.FC<Props> = ({ files }) => {
         <div className="w-full">
           <div className="flex justify-between px-3">
             <h2 className="mb-2 text-xl font-bold">Files</h2>
-            <button
-              className="px-4 py-2 mb-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
+            <Button
+              className="flex items-center justify-center"
               onClick={() => {
                 setAddModalVisible(true)
               }}
+              icon={<PlusSquareOutlined  className='mt-0'/>}
             >
-              <FaPlus />
-            </button>
+                Add
+            </Button>
+
+
           </div>
           <div className="overflow-x-auto">
             <Table
@@ -178,6 +182,7 @@ const FilesTable: React.FC<Props> = ({ files }) => {
         onCancel={() => {
           setAddModalVisible(false);
         }}
+        width={"80%"}
         footer={null}
       >
         <Button type='link' onClick={handleDownloadSample}>Download sample</Button>
