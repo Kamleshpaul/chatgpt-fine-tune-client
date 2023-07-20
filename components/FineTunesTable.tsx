@@ -1,6 +1,6 @@
 "use client"
 
-import { handleCancelFineTune, handleViewFineTune } from "@/actions/opanai";
+import { handleCancelFineTune, handleDeleteModal, handleViewFineTune } from "@/actions/opanai";
 import { Button, Modal, Popconfirm, Table } from "antd";
 import { CloseOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons"
 import { useState } from "react";
@@ -25,9 +25,7 @@ export default function FineTunesTable({ fineTunes }: any) {
     const dataArrayWithId = dataArray.map((obj: FineTuneEvents, index: number) => ({ ...obj, id: index }));
     setViewModalData(dataArrayWithId);
   }
-  const handleDelete = (id: string) => {
-    console.log('handleDelete', id)
-  }
+
 
   const columns = [
     {
@@ -73,7 +71,7 @@ export default function FineTunesTable({ fineTunes }: any) {
             <Popconfirm
               title="Delete"
               description="Are you sure to delete?"
-              onConfirm={() => handleDelete(record.id)}
+              onConfirm={() => handleDeleteModal(record.fine_tuned_model)}
               okText="Yes"
               cancelText="No"
             >
