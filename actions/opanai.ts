@@ -32,7 +32,7 @@ export async function handleUpload(path: any) {
 export async function handleCreateFineTune(fileId: string) {
   await openai.createFineTune({
     training_file: fileId,
-    model:'gpt-3.5-turbo'
+    model: 'davinci'
   })
   revalidatePath('/');
 }
@@ -49,6 +49,7 @@ export async function handleViewFineTune(id: string) {
 }
 
 export async function handleDeleteModal(modalId: string) {
-  await openai.deleteModel(modalId);
+  const res = await openai.deleteModel(modalId);
+  console.log({ res });
   revalidatePath('/');
 }
